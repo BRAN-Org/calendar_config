@@ -79,8 +79,11 @@ def render_calendar_grid_svg(schedule_data, year: int, month: int, today_date: d
     grid_height = num_weeks * cell_height
     
     notes_top = grid_top + grid_height + 16
-    notes_height = 110 if active_tasks else 95
-    total_height = notes_top + notes_height + 28
+    if active_tasks:
+        notes_height = 28 + (len(active_tasks) * 22) + 8
+    else:
+        notes_height = 54
+    total_height = notes_top + notes_height + 26
     
     # Paleta de cores inspirada na folha tradicional
     PRIMARY_RED = "#c5222f"
@@ -201,40 +204,35 @@ def render_calendar_grid_svg(schedule_data, year: int, month: int, today_date: d
     # Borda externa da grade
     svg_lines.append(f'  <rect x="{left_margin}" y="{weekday_bar_top}" width="{grid_width}" height="{weekday_bar_height + grid_height}" fill="none" stroke="{PRIMARY_RED}" stroke-width="1.5" />')
 
-    # Bloco inferior de notas / checklist da equipe
+    # Bloco inferior: lista simples a verificar
     svg_lines.extend([
         '',
-        '  <!-- Notes / Operational Checklist Section -->',
+        '  <!-- Notes / A Verificar -->',
         f'  <rect x="{left_margin}" y="{notes_top}" width="{grid_width}" height="{notes_height}" rx="8" fill="{NOTES_BG}" stroke="{NOTES_BORDER}" stroke-width="1.2" />',
+        f'  <text x="{left_margin + 16}" y="{notes_top + 20}" class="notes-title">A VERIFICAR:</text>',
     ])
 
     if active_tasks:
-        task_names = ", ".join([f"{t.get('short_name', t['name'])} ({year})" for t in active_tasks])
-        first_task = active_tasks[0]
-        checklist_preview = " • ".join(first_task.get("checklist", [])[:3])
-        if len(first_task.get("checklist", [])) > 3:
-            checklist_preview += "..."
-
-        svg_lines.extend([
-            f'  <text x="{left_margin + 16}" y="{notes_top + 24}" class="notes-title">📌 ATIVIDADES DE CURADORIA EM DESTAQUE NESTE MÊS:</text>',
-            f'  <text x="{left_margin + 16}" y="{notes_top + 46}" class="notes-body"><tspan font-weight="700">Base Ativa:</tspan> {escape_xml(task_names)} — Repositório: <tspan font-family="monospace">{escape_xml(first_task.get("repo", ""))}</tspan></text>',
-            f'  <text x="{left_margin + 16}" y="{notes_top + 68}" class="notes-sub"><tspan font-weight="600">Checklist Operacional:</tspan> {escape_xml(checklist_preview)}</text>',
-            f'  <text x="{left_margin + 16}" y="{notes_top + 90}" class="notes-sub"><tspan font-weight="600">Ação da Equipe:</tspan> Conferir issue aberta automaticamente no repositório <tspan font-family="monospace">BRAN-Org/calendar_config</tspan> para registrar o progresso.</text>',
-        ])
+        item_y = notes_top + 40
+        for t in active_tasks:
+            sigla = t.get("sigla") or t.get("short_name", t["name"])
+            summary = t.get("summary") or t["name"]
+            svg_lines.append(
+                f'  <text x="{left_margin + 16}" y="{item_y}" class="notes-body">• <tspan font-weight="700">{escape_xml(sigla)} ({year}):</tspan> {escape_xml(summary)}</text>'
+            )
+            item_y += 22
     else:
         next_year, next_month, next_tasks = find_next_upcoming_tasks(schedule_data, year, month)
         if next_tasks:
             next_m_name = MONTH_NAMES_PT[next_month]
-            next_names = " e ".join([t.get("short_name", t["name"]) for t in next_tasks])
-            next_msg = f"Próxima janela programada: {next_m_name} de {next_year} ({next_names})."
+            next_names = " e ".join([t.get("sigla", t.get("short_name", t["name"])) for t in next_tasks])
+            msg = f"Nenhuma conferência para verificar neste mês. Próxima janela: {next_m_name}/{next_year} ({next_names})."
         else:
-            next_msg = "Nenhuma verificação cadastrada para os próximos meses."
+            msg = "Nenhuma conferência para verificar neste mês."
 
-        svg_lines.extend([
-            f'  <text x="{left_margin + 16}" y="{notes_top + 28}" class="notes-title">✅ STATUS DA CURADORIA: TUDO EM DIA</text>',
-            f'  <text x="{left_margin + 16}" y="{notes_top + 52}" class="notes-body">Nenhuma base de dados da BRAN Org possui conferência de anais ou auditoria crítica programada para {month_name}.</text>',
-            f'  <text x="{left_margin + 16}" y="{notes_top + 74}" class="notes-sub">📅 <tspan font-weight="600">{escape_xml(next_msg)}</tspan></text>',
-        ])
+        svg_lines.append(
+            f'  <text x="{left_margin + 16}" y="{notes_top + 40}" class="notes-body">• {escape_xml(msg)}</text>'
+        )
 
     # Footer
     footer_y = total_height - 12

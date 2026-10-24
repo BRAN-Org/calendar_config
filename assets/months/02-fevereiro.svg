@@ -1,4 +1,4 @@
-<svg width="100%" height="557" viewBox="0 0 860 557" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Calendário Fevereiro 2026">
+<svg width="100%" height="514" viewBox="0 0 860 514" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Calendário Fevereiro 2026">
   <defs>
     <style>
       .cal-bg { fill: #ffffff; stroke: #e0d0c0; stroke-width: 1.5; rx: 10px; }
@@ -12,7 +12,7 @@
       .footer-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #998375; }
     </style>
   </defs>
-  <rect width="860" height="557" class="cal-bg" />
+  <rect width="860" height="514" class="cal-bg" />
 
   <!-- Top Header -->
   <text x="25" y="28" class="cal-subtitle">BRAN ORG • CONFERÊNCIAS DO MÊS</text>
@@ -97,13 +97,12 @@
   <text x="727.3" y="355.0" class="day-num" fill="#c5222f">28</text>
   <rect x="25" y="70" width="810" height="348" fill="none" stroke="#c5222f" stroke-width="1.5" />
 
-  <!-- Notes / Operational Checklist Section -->
-  <rect x="25" y="434" width="810" height="95" rx="8" fill="#fffcf9" stroke="#edd8c7" stroke-width="1.2" />
-  <text x="41" y="462" class="notes-title">✅ STATUS DA CURADORIA: TUDO EM DIA</text>
-  <text x="41" y="486" class="notes-body">Nenhuma base de dados da BRAN Org possui conferência de anais ou auditoria crítica programada para Fevereiro.</text>
-  <text x="41" y="508" class="notes-sub">📅 <tspan font-weight="600">Próxima janela programada: Julho de 2026 (DataGramaZero).</tspan></text>
+  <!-- Notes / A Verificar -->
+  <rect x="25" y="434" width="810" height="54" rx="8" fill="#fffcf9" stroke="#edd8c7" stroke-width="1.2" />
+  <text x="41" y="454" class="notes-title">A VERIFICAR:</text>
+  <text x="41" y="474" class="notes-body">• Nenhuma conferência para verificar neste mês. Próxima janela: Julho/2026 (DGZero).</text>
 
   <!-- Footer -->
-  <text x="25" y="545" class="footer-txt">Atualizado automaticamente via GitHub Actions • Fonte canônica: curation-schedule.yml</text>
-  <text x="835" y="545" text-anchor="end" class="footer-txt">BRAN Org • Brazilian Research Archive Network</text>
+  <text x="25" y="502" class="footer-txt">Atualizado automaticamente via GitHub Actions • Fonte canônica: curation-schedule.yml</text>
+  <text x="835" y="502" text-anchor="end" class="footer-txt">BRAN Org • Brazilian Research Archive Network</text>
 </svg>
