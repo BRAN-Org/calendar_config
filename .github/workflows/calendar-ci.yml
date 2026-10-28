@@ -83,7 +83,8 @@ jobs:
             echo "Calendário e assets já estão atualizados. Nenhuma mudança para comitar."
           else
             git commit -m "chore(calendar): sincronizar calendar.ics e SVGs por CRONA"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
 
   notify-tasks:
