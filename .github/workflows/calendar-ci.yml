@@ -1,4 +1,4 @@
-name: BRAN Curation Calendar CI/CD
+name: BRAN Curation Calendar & CRONA Bot CI/CD
 
 on:
   schedule:
@@ -35,6 +35,25 @@ jobs:
       - name: Checkout repositório
         uses: actions/checkout@v4
 
+      - name: Obter Token da CRONA (GitHub App)
+        id: app-token
+        if: ${{ secrets.CRONA_APP_ID != '' && secrets.CRONA_PRIVATE_KEY != '' }}
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.CRONA_APP_ID }}
+          private-key: ${{ secrets.CRONA_PRIVATE_KEY }}
+
+      - name: Definir Identidade
+        id: auth
+        run: |
+          if [ -n "${{ steps.app-token.outputs.token }}" ]; then
+            echo "token=${{ steps.app-token.outputs.token }}" >> $GITHUB_OUTPUT
+            echo "bot_name=crona-bot[bot]" >> $GITHUB_OUTPUT
+          else
+            echo "token=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_OUTPUT
+            echo "bot_name=github-actions[bot]" >> $GITHUB_OUTPUT
+          fi
+
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
@@ -57,18 +76,18 @@ jobs:
 
       - name: Comitar alterações se houver
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ steps.auth.outputs.bot_name }}"
+          git config user.email "${{ steps.auth.outputs.bot_name }}@users.noreply.github.com"
           git add calendar.ics assets/
           if git diff --staged --quiet; then
             echo "Calendário e assets já estão atualizados. Nenhuma mudança para comitar."
           else
-            git commit -m "chore(calendar): sincronizar calendar.ics e SVGs dos 12 meses"
+            git commit -m "chore(calendar): sincronizar calendar.ics e SVGs por CRONA"
             git push
           fi
 
   notify-tasks:
-    name: Verificar Tarefas e Criar Issues
+    name: CRONA - Verificar Tarefas e Criar Issues
     needs: sync-calendar
     if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
@@ -78,6 +97,14 @@ jobs:
     steps:
       - name: Checkout repositório
         uses: actions/checkout@v4
+
+      - name: Obter Token da CRONA (GitHub App)
+        id: app-token
+        if: ${{ secrets.CRONA_APP_ID != '' && secrets.CRONA_PRIVATE_KEY != '' }}
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.CRONA_APP_ID }}
+          private-key: ${{ secrets.CRONA_PRIVATE_KEY }}
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -89,7 +116,7 @@ jobs:
 
       - name: Executar verificação e criação de issues
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           EXTRA_ARGS=""
