@@ -131,3 +131,41 @@ jobs:
             EXTRA_ARGS="$EXTRA_ARGS --dry-run"
           fi
           python3 scripts/notify_curation_tasks.py $EXTRA_ARGS
+
+  audit-protection:
+    name: CRONA - Auditoria de Proteção de Branches
+    needs: sync-calendar
+    if: always() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+
+      - name: Obter Token da CRONA (GitHub App)
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        continue-on-error: true
+        with:
+          app-id: ${{ secrets.CRONA_APP_ID }}
+          private-key: ${{ secrets.CRONA_PRIVATE_KEY }}
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar PyYAML
+        run: pip install pyyaml
+
+      - name: Auditar Proteção de Branches e Abrir/Fechar Issues
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
+        run: |
+          ARGS=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            ARGS="--dry-run"
+          fi
+          python3 scripts/audit_branch_protection.py $ARGS
