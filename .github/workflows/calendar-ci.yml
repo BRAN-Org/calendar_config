@@ -32,9 +32,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout repositório
-        uses: actions/checkout@v4
-
       - name: Obter Token da CRONA (GitHub App)
         id: app-token
         uses: actions/create-github-app-token@v1
@@ -53,6 +50,11 @@ jobs:
             echo "token=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_OUTPUT
             echo "bot_name=github-actions[bot]" >> $GITHUB_OUTPUT
           fi
+
+      - name: Checkout repositório
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.auth.outputs.token }}
 
       - name: Configurar Python
         uses: actions/setup-python@v5
@@ -84,7 +86,7 @@ jobs:
           else
             git commit -m "chore(calendar): sincronizar calendar.ics e SVGs por CRONA"
             git pull --rebase origin main
-            git push origin main
+            git push "https://x-access-token:${{ steps.auth.outputs.token }}@github.com/${{ github.repository }}.git" HEAD:main
           fi
 
   notify-tasks:
