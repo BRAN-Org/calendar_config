@@ -105,12 +105,12 @@
   <text x="264.4" y="435.0" class="day-num" fill="#c5222f">27</text>
   <rect x="372.1" y="418.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="380.1" y="435.0" class="day-num" fill="#c5222f">28</text>
-  <rect x="487.9" y="418.0" width="115.7" height="80.0" fill="#fff1f2" stroke="#e8d5c4" stroke-width="1" />
+  <rect x="487.9" y="418.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="495.9" y="435.0" class="day-num" fill="#c5222f">29</text>
-  <rect x="559.6" y="423.0" width="38" height="15" rx="4" fill="#c5222f" />
-  <text x="578.6" y="434.0" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9px" font-weight="700" fill="#ffffff">HOJE</text>
-  <rect x="603.6" y="418.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
+  <rect x="603.6" y="418.0" width="115.7" height="80.0" fill="#fff1f2" stroke="#e8d5c4" stroke-width="1" />
   <text x="611.6" y="435.0" class="day-num" fill="#c5222f">30</text>
+  <rect x="675.3" y="423.0" width="38" height="15" rx="4" fill="#c5222f" />
+  <text x="694.3" y="434.0" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9px" font-weight="700" fill="#ffffff">HOJE</text>
   <rect x="719.3" y="418.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="727.3" y="435.0" class="day-num" fill="#c5222f">31</text>
   <rect x="25" y="70" width="810" height="428" fill="none" stroke="#c5222f" stroke-width="1.5" />
