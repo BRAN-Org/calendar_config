@@ -39,14 +39,14 @@
   <line x1="719.3" y1="70" x2="719.3" y2="98" stroke="#e06670" stroke-width="1" />
 
   <!-- Grid Cells -->
-  <rect x="25.0" y="98.0" width="115.7" height="80.0" fill="#fff1f2" stroke="#e8d5c4" stroke-width="1" />
+  <rect x="25.0" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="33.0" y="115.0" class="day-num" fill="#c5222f">1</text>
-  <rect x="96.7" y="103.0" width="38" height="15" rx="4" fill="#c5222f" />
-  <text x="115.7" y="114.0" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9px" font-weight="700" fill="#ffffff">HOJE</text>
   <rect x="140.7" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="148.7" y="115.0" class="day-num" fill="#c5222f">2</text>
-  <rect x="256.4" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
+  <rect x="256.4" y="98.0" width="115.7" height="80.0" fill="#fff1f2" stroke="#e8d5c4" stroke-width="1" />
   <text x="264.4" y="115.0" class="day-num" fill="#c5222f">3</text>
+  <rect x="328.1" y="103.0" width="38" height="15" rx="4" fill="#c5222f" />
+  <text x="347.1" y="114.0" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9px" font-weight="700" fill="#ffffff">HOJE</text>
   <rect x="372.1" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="380.1" y="115.0" class="day-num" fill="#c5222f">4</text>
   <rect x="487.9" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
