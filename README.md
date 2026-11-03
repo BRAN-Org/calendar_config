@@ -66,8 +66,8 @@ Os SVGs em grade de todos os meses do ano ficam pré-compilados na pasta [`asset
 | **Abril** | [`04-abril.svg`](assets/months/04-abril.svg) | Em dia / Sem janelas críticas |
 | **Maio** | [`05-maio.svg`](assets/months/05-maio.svg) | Em dia / Sem janelas críticas |
 | **Junho** | [`06-junho.svg`](assets/months/06-junho.svg) | Em dia / Sem janelas críticas |
-| **Julho** | [`07-julho.svg`](assets/months/07-julho.svg) | Auditoria de integridade fria: **DataGramaZero** (`DGZero`) |
-| **Agosto** | [`08-agosto.svg`](assets/months/08-agosto.svg) | Em dia / Sem janelas críticas |
+| **Julho** | [`07-julho.svg`](assets/months/07-julho.svg) | Auditoria de integridade fria: **DataGramaZero** (`DGZero`) e janela bienal: **CBBD** (anos pares) |
+| **Agosto** | [`08-agosto.svg`](assets/months/08-agosto.svg) | Janela bienal: **CBBD** (anos pares) |
 | **Setembro** | [`09-setembro.svg`](assets/months/09-setembro.svg) | Janela bienal: **EBBC** (anos pares) |
 | **Outubro** | [`10-outubro.svg`](assets/months/10-outubro.svg) | Janela bienal: **EBBC** (anos pares) |
 | **Novembro** | [`11-novembro.svg`](assets/months/11-novembro.svg) | Em dia / Sem janelas críticas |
