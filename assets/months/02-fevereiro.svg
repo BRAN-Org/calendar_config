@@ -100,7 +100,7 @@
   <!-- Notes / A Verificar -->
   <rect x="25" y="434" width="810" height="54" rx="8" fill="#fffcf9" stroke="#edd8c7" stroke-width="1.2" />
   <text x="41" y="454" class="notes-title">A VERIFICAR:</text>
-  <text x="41" y="474" class="notes-body">• Nenhuma conferência para verificar neste mês. Próxima janela: Julho/2026 (DGZero).</text>
+  <text x="41" y="474" class="notes-body">• Nenhuma conferência para verificar neste mês. Próxima janela: Julho/2026 (DGZero e CBBD).</text>
 
   <!-- Footer -->
   <text x="25" y="502" class="footer-txt">Atualizado automaticamente via GitHub Actions • Fonte canônica: curation-schedule.yml</text>
