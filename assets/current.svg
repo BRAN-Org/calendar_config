@@ -43,10 +43,8 @@
   <text x="33.0" y="115.0" class="day-num" fill="#c5222f">1</text>
   <rect x="140.7" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="148.7" y="115.0" class="day-num" fill="#c5222f">2</text>
-  <rect x="256.4" y="98.0" width="115.7" height="80.0" fill="#fff1f2" stroke="#e8d5c4" stroke-width="1" />
+  <rect x="256.4" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="264.4" y="115.0" class="day-num" fill="#c5222f">3</text>
-  <rect x="328.1" y="103.0" width="38" height="15" rx="4" fill="#c5222f" />
-  <text x="347.1" y="114.0" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9px" font-weight="700" fill="#ffffff">HOJE</text>
   <rect x="372.1" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="380.1" y="115.0" class="day-num" fill="#c5222f">4</text>
   <rect x="487.9" y="98.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
@@ -57,8 +55,10 @@
   <text x="727.3" y="115.0" class="day-num" fill="#c5222f">7</text>
   <rect x="25.0" y="178.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="33.0" y="195.0" class="day-num" fill="#c5222f">8</text>
-  <rect x="140.7" y="178.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
+  <rect x="140.7" y="178.0" width="115.7" height="80.0" fill="#fff1f2" stroke="#e8d5c4" stroke-width="1" />
   <text x="148.7" y="195.0" class="day-num" fill="#c5222f">9</text>
+  <rect x="212.4" y="183.0" width="38" height="15" rx="4" fill="#c5222f" />
+  <text x="231.4" y="194.0" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="9px" font-weight="700" fill="#ffffff">HOJE</text>
   <rect x="256.4" y="178.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
   <text x="264.4" y="195.0" class="day-num" fill="#c5222f">10</text>
   <rect x="372.1" y="178.0" width="115.7" height="80.0" fill="#fffbf7" stroke="#e8d5c4" stroke-width="1" />
